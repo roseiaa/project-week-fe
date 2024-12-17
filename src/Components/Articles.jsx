@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import axios from "axios"
 import ArticleCard from "./ArticleCard"
 
@@ -7,14 +7,16 @@ function Articles() {
     function handleApi() {
         axios.get("https://nc-news-jstr.onrender.com/api/articles")
         .then((response) => {
-            console.log(response)
             setArticles(response.data.articles)
         })
         .catch((err) => {
             console.log(err)
         })
     }
-    handleApi()
+    useEffect(() => {
+
+        handleApi()
+    }, [])
 
     return (
         <main>

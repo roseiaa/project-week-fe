@@ -3,9 +3,11 @@ body {
   background-color: #e3d5ca;
 }
 #article-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr auto;
   list-style-type: none;
-  flex-wrap: wrap;
+  gap: 0;
 }
 
 .article-card {
@@ -22,4 +24,19 @@ body {
   height: 200px;
   border-top-left-radius:  20px;
   border-top-right-radius: 20px;
+}
+
+.single-article {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  justify-content: center;
+  width: 600px;
+  padding: 20px;
+  border-radius: 30px;
+}
+
+#single-article-container {
+  display: flex;
+  justify-content: center;
 }
