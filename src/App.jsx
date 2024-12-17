@@ -3,8 +3,8 @@ import './App.css'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import Articles from './Components/Articles'
-const cors = require('cors')
-App.use(cors())
+
+
 function App() {
   
 
