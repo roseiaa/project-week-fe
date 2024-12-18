@@ -34,9 +34,51 @@ body {
   width: 600px;
   padding: 20px;
   border-radius: 30px;
+  margin-right: 40px;
 }
 
 #single-article-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  align-items: start;
+  justify-content: center
+}
+
+.comment {
+  padding: 0px 3px 0px 3px;
+  font-size: 0.8rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows:1fr auto 1fr ;
+  background-color: white;
+  border: solid 1px black;
+  width: 300px;
+  text-align: start;
+  row-gap: 0px;
+  column-gap: 0px;
+  border-radius: 20px;
+
+}
+#comment_container {
+  list-style-type: none;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr ;
+  grid-template-rows: 1fr 1fr 1fr  auto;
+  padding: 0px;
+  row-gap: 10px;
+  column-gap: 10px;
+  height: auto;
+  width: 40vw;
+}
+.comment-text {
+  grid-column: 1 / span 2;
+  font-size: 0.9em;
+}
+
+.vote-button {
+  height: 30px;
+  width: 50px;
+  align-self: center;
+
+  
 }
