@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { deleteComment } from "../utils/apiCalls";
 
 function CommentCard({ comment }) {
   const [vote, setVotes] = useState(comment.votes);
@@ -58,6 +59,14 @@ function CommentCard({ comment }) {
         }}
       >
         Dislike
+      </button>
+      <button
+        onClick={(e) => {
+          console.log(comment.comment_id)
+          deleteComment(comment.comment_id)
+        }}
+      >
+        Delete
       </button>
     </>
   );
