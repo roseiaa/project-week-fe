@@ -62,7 +62,6 @@ function CommentCard({ comment }) {
       </button>
       <button
         onClick={(e) => {
-          console.log(comment.comment_id)
           deleteComment(comment.comment_id)
         }}
       >

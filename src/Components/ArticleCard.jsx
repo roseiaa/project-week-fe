@@ -8,7 +8,8 @@ function ArticleCard({article}){
              <Link to= {{pathname: `/articles/${article.article_id}`}}>
              <h3>{article.title}</h3>
              </Link>
-             <p>{article.author}</p>
+             <p>Author: {article.author}</p>
+             <p>Votes: {article.votes}</p>
          </article>
     )
 }

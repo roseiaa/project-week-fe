@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 function Header({user, topics}){
-    console.log(topics)
     return(
         <>
         <nav id="navbar">

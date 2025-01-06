@@ -11,7 +11,7 @@ function Article({ user }) {
   const [isLoading, handleLoading] = useState(false);
   const [isPosting, handlePosting] = useState(false);
   const params = useParams();
-  const [commentInput, setCommentInput] = useState("")
+  const [commentInput, setCommentInput] = useState("");
 
   useEffect(() => {
     handleArticle(params, setArticle, handleLoading);
@@ -45,7 +45,9 @@ function Article({ user }) {
 
             <form id="comment-form">
               {isPosting ? <p>posting</p> : <p></p>}
-              <label className="comment-label" htmlFor="commentInput">Add Comment:</label>
+              <label className="comment-label" htmlFor="commentInput">
+                Add Comment:
+              </label>
               <textarea
                 type="text"
                 name="commentInput"
@@ -53,7 +55,7 @@ function Article({ user }) {
                 value={commentInput}
                 onChange={(e) => {
                   setCommentInput(e.target.value);
-                  console.log(commentInput)
+
                 }}
                 placeholder="comment.."
               />
@@ -61,14 +63,12 @@ function Article({ user }) {
                 type="submit"
                 onClick={(e) => {
                   e.preventDefault();
-                  console.log(commentInput)
                   const commentData = {
                     username: user.username,
                     body: commentInput,
                   };
                   handleComment(params, commentData, handlePosting);
-                   setCommentInput("")
-
+                  setCommentInput("");
                 }}
               >
                 Post

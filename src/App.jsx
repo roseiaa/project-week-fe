@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Articles from "./Components/Articles";
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import Article from "./Components/Article";
 import { getUsers, handleTopics } from "./utils/apiCalls";
 
@@ -26,7 +26,6 @@ function App() {
           element={<Article user={user} />}
         ></Route>
         {topics.map((topic) => {
-          console.log(topic.slug, "App.Jsx")
           return (
             <Route
               key={topic.slug}
