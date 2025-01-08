@@ -12,7 +12,7 @@ The NC News Frontend is a web application designed to interact with the NC News 
 
 Node.js: v16.0.0 or higher
 
-Installation and Setup
+## Installation and Setup
 
 ### 1. Clone the Repository
 
