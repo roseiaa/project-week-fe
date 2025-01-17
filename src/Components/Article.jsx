@@ -12,11 +12,16 @@ function Article({ user }) {
   const [isPosting, handlePosting] = useState(false);
   const params = useParams();
   const [commentInput, setCommentInput] = useState("");
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     handleArticle(params, setArticle, handleLoading);
-    getComments(params, setComments);
-  }, [isLoading, isPosting]);
+  }, [params]);
+
+  useEffect(() => {
+    getComments(params, setComments, page, handleLoading);
+  }, [params, page]);
+
 
   return (
     <>
@@ -26,11 +31,36 @@ function Article({ user }) {
             <div className="single-article">
               <h3>{article.title}</h3>
               <img src={article.article_img_url} alt="Article" />
-              <p>Posted: {article.created_at}</p>
+              <p>{new Date(article.created_at).toDateString()}</p>
               <p>{article.body}</p>
               <Link to="/">Return</Link>
             </div>
             <div>
+            <section id="button-container">
+        <button onClick={() => {
+          setPage((page) => {
+            if (page > 1) {
+              return page - 1
+            }
+            else {
+              console.log("You are on the first page")
+              return page = 1
+            }
+          })
+        }}>Back</button>
+        <p>{page}</p>
+        <button onClick={() => {
+          setPage((page) => {
+            console.log(comments.length)
+            if(comments.length === 6) {
+              return page + 1
+            }
+            else {
+              return page
+            }
+          })
+        }}>Next</button>
+        </section>
               <ul id="comment_container">
                 {comments.map((comment) => {
                   return (
@@ -41,7 +71,6 @@ function Article({ user }) {
                   );
                 })}
               </ul>
-            </div>
 
             <form id="comment-form">
               {isPosting ? <p>posting</p> : <p></p>}
@@ -55,10 +84,10 @@ function Article({ user }) {
                 value={commentInput}
                 onChange={(e) => {
                   setCommentInput(e.target.value);
-
+                  
                 }}
                 placeholder="comment.."
-              />
+                />
               <button
                 type="submit"
                 onClick={(e) => {
@@ -67,13 +96,14 @@ function Article({ user }) {
                     username: user.username,
                     body: commentInput,
                   };
-                  handleComment(params, commentData, handlePosting);
+                  handleComment(params, commentData, handlePosting, setPage);
                   setCommentInput("");
                 }}
-              >
+                >
                 Post
               </button>
             </form>
+                </div>
           </>
         ) : isLoading ? (
           <>

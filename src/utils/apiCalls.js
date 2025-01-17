@@ -4,11 +4,12 @@ const apiClient = axios.create({
   baseURL: "https://nc-news-jstr.onrender.com",
 });
 
-export function handleAllArticles(setArticles, sort_by="created_at", order, topicData) {
+export function handleAllArticles(setArticles, sort_by="created_at", order, limit=10, p, topicData) {
   const topic = topicData ;
+  console.log(limit, p)
   return apiClient
     .get("/api/articles", {
-      params: { sort_by: sort_by, order: order, topic},
+      params: { sort_by: sort_by, order: order, limit: limit, p:p, topic},
     })
     .then((response) => {
       console.log(response)
@@ -33,11 +34,17 @@ export function handleArticle(params, setArticle, handleLoading) {
     });
 }
 
-export function getComments(params, setComments) {
+export function getComments(params, setComments, page, handleLoading) {
+  handleLoading(true)
   apiClient
-    .get(`/api/articles/${params.article_id}/comments`)
+    .get(`/api/articles/${params.article_id}/comments`, {params: {page: page}})
     .then((response) => {
+      console.log(page, "hello")
       setComments(response.data.comments);
+      handleLoading(false)
+    })
+    .catch((err) => {
+      console.log(err);
     });
 }
 
@@ -47,13 +54,14 @@ export function getUsers(setUsers) {
   });
 }
 
-export function handleComment(params, body, handlePosting) {
+export function handleComment(params, body, handlePosting, setPage) {
   handlePosting(true);
   apiClient
     .post(`/api/articles/${params.article_id}/comments`, body)
     .then((response) => {
       console.log(response);
       handlePosting(false);
+      setPage(1)
     })
     .catch((err) => {
       console.log(err);
