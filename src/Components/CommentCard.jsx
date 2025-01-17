@@ -32,10 +32,17 @@ function CommentCard({ comment }) {
 
   return (
     <>
+    <div className="comment-organise">
+      <div className="comment-row" >
       <h3>{comment.author}</h3>
-      <p>{comment.created_at}</p>
+      <p>{new Date(comment.created_at).toDateString()}</p>
+      </div>
+      <div>
       <p className="comment-text">{comment.body}</p>
       <p className="votes">Votes: {vote}</p>
+      </div>
+      <div className="comment-row-buttons">
+      <div>
       <button
         className="like-button"
         onClick={() => {
@@ -60,6 +67,7 @@ function CommentCard({ comment }) {
       >
         Dislike
       </button>
+      </div>
       <button
         onClick={(e) => {
           deleteComment(comment.comment_id)
@@ -67,6 +75,8 @@ function CommentCard({ comment }) {
       >
         Delete
       </button>
+      </div>
+      </div>
     </>
   );
 }

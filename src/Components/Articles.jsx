@@ -7,16 +7,19 @@ function Articles({ user, topic }) {
   const [sortby, setSortby] = useState("created_at");
   const [ascDesc, setAscDesc] = useState("DESC");
   const [isLoading, setLoading] = useState(false);
+  const [page, setPage] = useState(1)
   const topicData = {
     football: "Football",
     cooking: "Cooking",
     coding: "Coding",
   };
+  const limit = 12;
+  
 
   useEffect(() => {
     setLoading(true);
     if (topic) {
-      handleAllArticles(setArticles, sortby, ascDesc, topic.slug)
+      handleAllArticles(setArticles, sortby, ascDesc, limit, page, topic.slug)
         .then(() => {
           setLoading(false);
         })
@@ -24,7 +27,7 @@ function Articles({ user, topic }) {
           setLoading(false);
         });
     } else {
-      handleAllArticles(setArticles, sortby, ascDesc)
+      handleAllArticles(setArticles, sortby, ascDesc, limit, page)
         .then(() => {
           setLoading(false);
         })
@@ -32,7 +35,7 @@ function Articles({ user, topic }) {
           setLoading(false);
         });
     }
-  }, [topic, sortby, ascDesc]);
+  }, [topic, sortby, ascDesc, page]);
 
   return (
     <main>
@@ -73,13 +76,40 @@ function Articles({ user, topic }) {
       {isLoading ? (
         <p>Loading...</p> // Loading indicator
       ) : (
+        <>
         <ul id="article-container">
           {articles.map((article, index) => (
             <li className="article-card" key={index}>
               <ArticleCard article={article} />
             </li>
           ))}
+          
         </ul>
+        <section id="button-container">
+        <button onClick={() => {
+          setPage((page) => {
+            if (page > 1) {
+              return page - 1
+            }
+            else {
+              console.log("You are on the first page")
+              return page = 1
+            }
+          })
+        }}>Back</button>
+        <p>{page}</p>
+        <button onClick={() => {
+          setPage((page) => {
+            if(articles.length === limit) {
+              return page + 1
+            }
+            else {
+              return page
+            }
+          })
+        }}>Next</button>
+        </section>
+        </>
       )}
     </main>
   );
