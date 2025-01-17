@@ -165,7 +165,7 @@ grid-template-rows: 1fr 1fr 1fr;
 #comment-form {
   grid-column: 1;
   width: 50%;
-  justify-self: center;
+  justify-self: start;
   align-self: flex-start;
   margin: 0px;
 
@@ -268,3 +268,188 @@ grid-template-rows: 1fr 1fr 1fr;
   justify-content: center;
   gap: 10px;
 }
+
+/* Media query for tablets (max-width: 768px) */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem; /* Reduce font size for smaller screens */
+    padding: 10px;
+  }
+
+  #article-container {
+    grid-template-columns: 1fr; /* Reduce columns for better readability */
+    margin-left: 10px; /* Adjust alignment */
+    width: 90%; /* Make container take up more screen width */
+    padding: 10px;
+  }
+
+  .article-card {
+    width: 100%; /* Make cards more fluid */
+    margin: 10px 0; /* Reduce margins for better spacing */
+    height: auto; /* Allow height to adjust naturally */
+  }
+
+  .article-image {
+    width: 100%; /* Make images fit the card width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px;
+  }
+
+  #single-article-container {
+    flex-direction: column; /* Stack elements vertically */
+    margin: 10px;
+    width: 400px;
+  }
+
+  .single-article {
+    width: 100%; /* Adjust to container width */
+    margin-right: 0; /* Remove margin for better fit */
+  }
+
+  #comment_container {
+    grid-template-columns: 1fr; /* Single column for comments */
+    row-gap: 20px; /* Increase spacing between rows */
+  }
+
+  .comment {
+    width: 100%; /* Fit container width */
+    font-size: 0.7rem; /* Reduce font size */
+  }
+
+  #navbar {
+    flex-direction: column; /* Stack navigation items */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #navbar a {
+    font-size: 0.9rem; /* Reduce font size for links */
+    padding: 10px;
+    text-align: left;
+    
+  }
+
+  .profile-display {
+    justify-content: flex-start; /* Align profile section */
+  }
+
+  .profile-img {
+    width: 40px; /* Adjust size for smaller screens */
+    height: 40px;
+  }
+
+  #button-container {
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 5px;
+  }
+  .comment-form {
+    float: none;
+  }
+}
+
+/* Media query for mobile devices (max-width: 480px) */
+@media (max-width: 480px) {
+  #article-container {
+    grid-template-columns: 1fr; /* Single column for mobile */
+  }
+
+  .article-card {
+    font-size: 0.7rem; /* Further reduce font size */
+    height: auto;
+  }
+
+  .comment {
+    font-size: 0.6rem; /* Adjust font size for smaller screens */
+    padding: 5px;
+  }
+
+  #navbar {
+    font-size: 0.8rem; /* Scale down navbar font */
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+/* Media query for screens between tablets and desktops (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  body {
+    font-size: 0.9rem; /* Reduce font size for smaller screens */
+    padding: 10px;
+  }
+
+  #article-container {
+    grid-template-columns: 1fr; /* Reduce columns for better readability */
+    margin-left: 10px; /* Adjust alignment */
+    width: 90%; /* Make container take up more screen width */
+    padding: 10px;
+  }
+
+  .article-card {
+    width: 100%; /* Make cards more fluid */
+    margin: 10px 0; /* Reduce margins for better spacing */
+    height: auto; /* Allow height to adjust naturally */
+  }
+
+  .article-image {
+    width: 100%; /* Make images fit the card width */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 10px;
+  }
+
+  #single-article-container {
+    flex-direction: column; /* Stack elements vertically */
+    margin: 10px;
+    width: 75%;
+    align-items: center;
+    margin-left: 100px;
+  }
+
+  .single-article {
+    width: 100%; /* Adjust to container width */
+    margin-right: 0; /* Remove margin for better fit */
+  }
+
+  #comment_container {
+    grid-template-columns: 1fr; /* Single column for comments */
+    row-gap: 20px; /* Increase spacing between rows */
+  }
+
+  .comment {
+    width: 100%; /* Fit container width */
+    font-size: 0.7rem; /* Reduce font size */
+  }
+
+  #navbar {
+    flex-direction: column; /* Stack navigation items */
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #navbar a {
+    font-size: 0.9rem; /* Reduce font size for links */
+    padding: 10px;
+    text-align: left;
+    
+  }
+
+  .profile-display {
+    justify-content: flex-start; /* Align profile section */
+  }
+
+  .profile-img {
+    width: 40px; /* Adjust size for smaller screens */
+    height: 40px;
+  }
+
+  #button-container {
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 5px;
+  }
+  .comment-form {
+    float: none;
+  }
+}
+
+
